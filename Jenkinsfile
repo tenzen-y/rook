@@ -233,7 +233,6 @@ def RunIntegrationTest(k, v) {
                                   KUBECONFIG=$HOME/admin.conf \
                                   TEST_HELM_PATH=/tmp/rook-tests-scripts-helm/linux-amd64/helm \
                                   TEST_ENV_NAME='''+"${k}"+''' \
-                                  TEST_BASE_DIR="WORKING_DIR" \
                                   TEST_LOG_COLLECTION_LEVEL='''+"${env.getLogs}"+''' \
                                   STORAGE_PROVIDER_TESTS='''+"${env.testProvider}"+''' \
                                   TEST_ARGUMENTS='''+"${env.testArgs}"+''' \

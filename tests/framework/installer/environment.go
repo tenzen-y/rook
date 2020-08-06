@@ -47,13 +47,15 @@ func TestIsOfficialBuild() bool {
 }
 
 // baseTestDir gets the base test directory
-func baseTestDir() string {
+func baseTestDir() (string, error) {
 	// If the base test directory is actively set to empty (as in CI), we use the current working directory.
-	val := getEnvVarWithDefault("TEST_BASE_DIR", "/data")
-	if val == "WORKING_DIR" {
-		val, _ = os.Getwd()
+	wd, err :=  os.Getwd()
+
+	if err != nil {
+		return "", err
 	}
-	return val
+	val := getEnvVarWithDefault("TEST_BASE_DIR", wd)
+	return val, nil
 }
 
 // TestScratchDevice get the scratch device to be used for OSD
